@@ -6,4 +6,4 @@ class Dominio(models.Model):
     fecha_creacion = models.DateTimeField(default=timezone.now)
     fecha_vencimiento = models.DateField()
     costo_renovacion = models.DecimalField(max_digits=10, decimal_places=2)
-    notas = models.TextField(blank=True)
+    notas = models.TextField(blank=True)                            

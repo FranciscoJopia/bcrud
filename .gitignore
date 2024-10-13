@@ -1,0 +1,52 @@
+# Ignore Python bytecode and compiled files
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.so
+
+# Django specific
+*.log
+*.pot
+*.py[cod]
+*.sqlite3
+db.sqlite3
+# Ignore the database migrations
+*/migrations/__pycache__/
+*/migrations/*.pyc
+*/migrations/*.pyo
+
+# Ignore virtual environments
+env/
+venv/
+ENV/
+VENV/
+
+# Ignore secret files and configurations
+.env
+*.env
+settings_local.py
+secrets.json
+
+# Ignore media and static files (if any are generated)
+media/
+static/
+
+# Ignore MySQL Workbench or database dumps
+*.sql
+*.dump
+
+# Ignore IDE specific files
+.vscode/
+.idea/
+
+# Ignore macOS specific files
+.DS_Store
+
+# Ignore node_modules (if you use JavaScript with npm/yarn)
+node_modules/
+package-lock.json
+yarn.lock
+
+# Ignore Git-related files
+.git/
