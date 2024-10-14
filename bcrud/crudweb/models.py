@@ -17,7 +17,7 @@ class Dominio(models.Model):
     # Otra opción es agregar "null=True"
     fecha_creacion = models.DateTimeField(default=timezone.now)
     fecha_vencimiento = models.DateField()
-    costo_renovacion = models.DecimalField(max_digits=10, decimal_places=2)
+    costo_renovacion = models.DecimalField(max_digits=10, decimal_places=0)
     notas = models.TextField(blank=True)                          
 
     def __str__(self):
