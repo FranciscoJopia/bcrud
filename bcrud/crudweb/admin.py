@@ -2,7 +2,7 @@ from django.contrib import admin
 from .models import Cliente, Dominio
 
 @admin.register(Cliente)                # Registra el modelo Cliente.
-class ClienteAsmin(admin.ModelAdmin):   # Puedes Personalizar cómo se verá en el admin.
+class ClienteAdmin(admin.ModelAdmin):   # Puedes Personalizar cómo se verá en el admin.
     list_display = ('nombre', 'email', 'telefono', 'direccion')
     search_fields = ('nombre', 'email')
 
