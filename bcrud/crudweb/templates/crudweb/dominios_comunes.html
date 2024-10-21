@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dominios - Usuarios Comunes</title>
+</head>
+<body>
+    <h1>Lista de Dominios</h1>
+    <ul>
+        {% for form in forms %}
+            <li>
+                <h3>{{ form.instance.nombre }}</h3>
+                <p>Cliente: {{ form.instance.cliente }}</p>
+                <p>Fecha de Creación: {{ form.instance.fecha_creacion }}</p>
+                <p>Fecha de Vencimiento: {{ form.instance.fecha_vencimiento }}</p>
+               <!--<p>Costo de Renovación: {{ form.instance.costo_renovacion }}</p>
+                <p>Notas: {{ form.instance.notas }}</p>-->  <!-- SE HACE COMENTARIO PARA RESTRINGIR INFORMACIÓN -->
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

@@ -29,7 +29,7 @@ class Dominio(models.Model):
     costo_renovacion = models.IntegerField( 
         default=0, 
         validators=[MinValueValidator(0),           # Valida que el valor sea mayor o igual a 0
-                    MaxValueValidator(20000)]       # Valida el valor máximo es 20000    
+                    MaxValueValidator(50000)]       # Valida el valor máximo es 50000    
     )
     #costo_renovacion = models.DecimalField(max_digits=10, decimal_places=0)
     notas = models.TextField(blank=True)                          

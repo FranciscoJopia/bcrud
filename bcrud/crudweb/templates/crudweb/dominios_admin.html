@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administración de Dominios</title>
+</head>
+<body>
+    <h1>Administración de Dominios</h1>
+
+    <!-- Enlace para crear un nuevo dominio -->
+    <a href="{% url 'crear_dominio_admin' %}">Agregar Nuevo Dominio</a>
+
+    <!-- Mostrar mensajes de éxito o error -->
+    {% if messages %}
+        <ul>
+        {% for message in messages %}
+            <li>{{ message }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+
+    <!-- Listado de dominios y sus acciones -->
+    <ul>
+        {% for form in forms %}
+        <li>
+            <!-- Información del dominio -->
+            <h3>{{ form.instance.nombre }}</h3>
+            <p>Cliente: {{ form.instance.cliente.nombre }}</p>
+            <p>Fecha de Creación: {{ form.instance.fecha_creacion }}</p>
+            <p>Fecha de Vencimiento: {{ form.instance.fecha_vencimiento }}</p>
+            <p>Costo de Renovación: {{ form.instance.costo_renovacion }}</p>
+            <p>Notas: {{ form.instance.notas }}</p>
+        </li>
+         <!-- Botón para editar el dominio -->
+         <form method="GET" action="{% url 'editar_dominio_admin' form.instance.id %}" style="display:inline;">
+            {% csrf_token %}
+            <button type="submit">Editar</button>
+        </form>
+        
+        <!-- Botón para eliminar el dominio con confirmación -->
+        <form method="POST" action="{% url 'eliminar_dominio_admin' form.instance.id %}" style="display:inline;" onsubmit="return confirmDelete();">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Eliminar Dominio</button>
+        </form>
+        {% endfor %}
+        
+    </ul>
+
+    <!-- Script para confirmar la eliminación -->
+    <script>
+        function confirmDelete() {
+            return confirm("¿Realmente deseas ELIMINAR este Dominio?");
+        }
+    </script>
+</body>
+</html>
+
+

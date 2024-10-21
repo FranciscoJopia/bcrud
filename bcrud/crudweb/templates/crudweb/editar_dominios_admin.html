@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear/Editar Dominio</title>
+</head>
+<a href="{% url 'ver_dominios_admin' %}">Volver a la lista de dominios</a>
+<body>
+    <h1>{% if form.instance.id %}Editar Dominio{% else %}Crear Nuevo Dominio{% endif %}</h1>
+
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">{% if form.instance.id %}Actualizar{% else %}Crear{% endif %}</button>
+    </form>
+
+
+</body>
+</html>
