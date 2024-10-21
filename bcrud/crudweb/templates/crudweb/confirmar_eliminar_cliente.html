@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmar Eliminación de Cliente</title>
+</head>
+<body>
+    <h1>¿Realmente deseas eliminar este cliente?</h1>
+
+    <!-- Información del cliente a eliminar -->
+    <p><strong>Nombre:</strong> {{ cliente.nombre }}</p>
+    <p><strong>Teléfono:</strong> {{ cliente.telefono }}</p>
+    <p><strong>Email:</strong> {{ cliente.email }}</p>
+
+    <!-- Formulario para confirmar la eliminación -->
+    <form method="POST" action="">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Eliminar Cliente</button>
+        <a href="{% url 'ver_clientes_admin' %}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</body>
+</html>

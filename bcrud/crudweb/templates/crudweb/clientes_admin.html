@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administración de Clientes</title>
+</head>
+<body>
+    <h1>Administración de Clientes</h1>
+    <form method="GET" action="{% url 'ver_clientes_admin' %}">
+        <input type="text" name="q" placeholder="Buscar cliente" value="{{ query|default:'' }}">
+        <button type="submit">Buscar</button>
+    </form>
+
+    <!-- Enlace para crear un nuevo cliente -->
+    <a href="{% url 'crear_cliente_admin' %}">Agregar Nuevo Cliente</a>
+
+    <!-- Mostrar mensajes de éxito o error -->
+    {% if messages %}
+        <ul>
+        {% for message in messages %}
+            <li>{{ message }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+
+    <!-- Listado de clientes y sus acciones -->
+    <ul>
+        {% for cliente in clientes %}
+        <li>
+            <!-- Información del cliente -->
+            <h3>{{ cliente.nombre }}</h3>
+            <p>Teléfono: {{ cliente.telefono }}</p>
+            <p>Email: {{ cliente.email }}</p>
+            <p>Fecha de Registro: {{ cliente.fecha_registro }}</p>
+            
+            <!-- Botón para editar el cliente -->
+            <form method="GET" action="{% url 'editar_cliente_admin' cliente.id %}" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit">Editar</button>
+            </form>
+            
+            <!-- Botón para eliminar el cliente con confirmación -->
+            <form method="POST" action="{% url 'eliminar_cliente_admin' cliente.id %}" style="display:inline;" onsubmit="return confirmDelete();">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger">Eliminar Cliente</button>
+            </form>
+        </li>
+        {% empty %}
+        <li>No se encontraron clientes.</li>
+        {% endfor %}
+    </ul>
+
+    <!-- Script para confirmar la eliminación -->
+    <script>
+        function confirmDelete() {
+            return confirm("¿Realmente deseas ELIMINAR este Cliente?");
+        }
+    </script>
+</body>
+</html>

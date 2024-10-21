@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if form.instance.pk %}Editar Cliente{% else %}Crear Cliente{% endif %}</title>
+</head>
+<body>
+    <h1>{% if form.instance.pk %}Editar Cliente{% else %}Crear Cliente{% endif %}</h1>
+
+    <!-- Mostrar mensajes de éxito o error -->
+    {% if messages %}
+        <ul>
+        {% for message in messages %}
+            <li>{{ message }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+
+    <!-- Formulario para crear/editar un cliente -->
+    <form method="POST" action="">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <button type="submit">{% if form.instance.pk %}Guardar Cambios{% else %}Crear Cliente{% endif %}</button>
+    </form>
+
+    <!-- Enlace para regresar a la lista de clientes -->
+    <a href="{% url 'ver_clientes_admin' %}">Volver a la lista de clientes</a>
+</body>
+</html>

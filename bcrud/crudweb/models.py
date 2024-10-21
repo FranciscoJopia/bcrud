@@ -21,7 +21,7 @@ class Cliente(models.Model):
 # Acá termina el modelo de Cliente
 class Dominio(models.Model):
     nombre = models.CharField(max_length=60, unique=True)
-    cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE,related_name='dominios', default=1 )   
+    cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE,related_name='dominios', null=True )   
     # Asumiendo que el cliente con ID 1 es el default 
     # Otra opción es agregar "null=True"
     fecha_creacion = models.DateTimeField(default=timezone.now)

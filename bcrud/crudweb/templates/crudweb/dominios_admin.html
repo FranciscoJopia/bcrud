@@ -7,6 +7,10 @@
 </head>
 <body>
     <h1>Administración de Dominios</h1>
+    <form method="GET" action="{% url 'ver_dominios_admin' %}">
+        <input type="text" name="q" placeholder="Buscar dominio" value="{{ query|default:'' }}">
+        <button type="submit">Buscar</button>
+    </form>
 
     <!-- Enlace para crear un nuevo dominio -->
     <a href="{% url 'crear_dominio_admin' %}">Agregar Nuevo Dominio</a>
@@ -31,9 +35,8 @@
             <p>Fecha de Vencimiento: {{ form.instance.fecha_vencimiento }}</p>
             <p>Costo de Renovación: {{ form.instance.costo_renovacion }}</p>
             <p>Notas: {{ form.instance.notas }}</p>
-        </li>
-         <!-- Botón para editar el dominio -->
-         <form method="GET" action="{% url 'editar_dominio_admin' form.instance.id %}" style="display:inline;">
+        <!-- Botón para editar el dominio -->
+        <form method="GET" action="{% url 'editar_dominio_admin' form.instance.id %}" style="display:inline;">
             {% csrf_token %}
             <button type="submit">Editar</button>
         </form>
@@ -43,8 +46,10 @@
             {% csrf_token %}
             <button type="submit" class="btn btn-danger">Eliminar Dominio</button>
         </form>
-        {% endfor %}
-        
+    </li>
+    {% empty %}
+    <li>No se encontraron dominios.</li>
+    {% endfor %}
     </ul>
 
     <!-- Script para confirmar la eliminación -->
