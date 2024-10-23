@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+import os  # Asegúrate de tener este import en la parte superior de tu archivo settings.py
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -55,7 +57,8 @@ ROOT_URLCONF = 'bcrud.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        #'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],  # Aquí defines la ruta donde están tus plantillas
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
