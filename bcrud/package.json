@@ -1,0 +1,16 @@
+{
+  "name": "crudweb",
+  "version": "1.0.0",
+  "description": "Proyecto con Tailwind CSS",
+  "main": "index.js",
+  "scripts": {
+    "build:css": "npx tailwindcss -i ./static/css/styles.css -o ./static/css/taildwind.css --watch"
+  },
+  "dependencies": {
+    "tailwindcss": "^3.4.14"
+  },
+  "devDependencies": {
+    "postcss": "^8.4.6",
+    "autoprefixer": "^10.4.0"
+  }
+}

@@ -18,6 +18,7 @@ urlpatterns = [
     path('admin/clientes/crear/', login_required(views.editar_cliente_admin), name='crear_cliente_admin'),  # Crear un nuevo cliente.
     path('admin/clientes/editar/<int:id>/', login_required(views.editar_cliente_admin), name='editar_cliente_admin'),  # Editar un cliente existente.
     path('admin/clientes/eliminar/<int:cliente_id>/', login_required(views.confirmar_eliminar_cliente), name='eliminar_cliente_admin'),  # Confirmar eliminación de un cliente.
+    path('djadmin/', admin.site.urls),  # Ruta para acceder al admin de Django
 
 ]
 
